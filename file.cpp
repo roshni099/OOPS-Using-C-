@@ -1,20 +1,41 @@
-#include <iostream>
-#include <fstream>
+#include<iostream>
+#include<fstream>
 
 using namespace std;
 
 int main()
 {
-   string s1="Love You";
-   string s2;
-   ofstream out("sample.txt");
-   out<<s1;
+    string s1="Today is oop paper.";
+    string s2;
+    int i=0, count=0;
 
-   ifstream in("sample1.txt");
-   //in>>s2;
-   getline(in,s2);
-   cout<<s2;
-   out.close();
-   in.close();
-   return 0;
+    ofstream hout("exam.txt");
+    hout<<s1;
+    hout.close();
+
+    ifstream in("exam.txt");
+    getline(in,s2);
+    while(s2[i]!='\0')
+    {
+        if (s2[i]=='o')
+        {
+            count++;
+        }
+        i++;
+    }
+    cout<<"The total number of 'o' int the text is : "<<count;
+    in.close();
+
+    fstream st;
+    st.open("oops.txt", ios::out);
+    if (!st)
+    {
+        cout<<"failed";
+    }
+    else
+    {
+        cout<<"Created.\n";
+    }
+    return 0;
+
 }

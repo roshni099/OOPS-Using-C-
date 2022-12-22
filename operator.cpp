@@ -2,41 +2,50 @@
 
 using namespace std;
 
-class space
+class T
 {
 public:
-    int x;
-    int y;
-    int z;
-    space()
+    int a, b;
+
+    friend T operator+(T t, T z)
     {
-        cout << "\nEnter the value of x: ";
-        cin >> x;
-        cout << "\nEnter the value of y: ";
-        cin >> y;
-        cout << "\nEnter the value of z: ";
-        cin >> z;
+        T temp;
+        temp.a = t.a + z.a;
+        temp.b = t.b + z.b;
+        return temp;
     }
-    void display()
+    T operator<(T t)
     {
-        cout << "\nThe value of x is : " << x << endl;
-        cout << "\nThe value of y is : " << y << endl;
-        cout << "\nThe value of z is : " << z << endl;
-    }
-    void operator ++()
-    {
-        x = ++x;
-        y = ++y;
-        z = ++z;
+        T temp;
+        if (t.a > a)
+        {
+            temp.a = t.a;
+            temp.b = t.b;
+        }
+        else if (a > t.a)
+        {
+            temp.a = a;
+            temp.b = b;
+        }
+        return temp;
     }
 };
 
-
 int main()
 {
-    space s;
-    s.display();
-    ++s;
-    s.display();
+    T obj, obj1;
+    obj.a = 10;
+    obj.b = 20;
+    obj1.a = 50;
+    obj1.b = 100;
+    T obj3;
+    obj3 = obj < obj1;
+    cout << "The value of a: " << obj3.a << " b: " << obj3.b;
+    // T obj2;
+    // obj2.a=30;
+    // obj2.b=70;
+    // T res;
+    // res=obj+obj2;
+    // cout<<"The resultanet value is A: "<<res.a<<" B: "<<res.b;
     return 0;
 }
